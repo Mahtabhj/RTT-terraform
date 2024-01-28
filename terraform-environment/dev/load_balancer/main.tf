@@ -1,15 +1,15 @@
 
-resource "aws_lb" "my_alb" {
+resource "aws_lb" "rtt_alb" {
   subnets            = aws_subnet.public_subnet[*].id
   security_groups    = aws_security_group.alb_sg[*].id
-  name               = "my-alb"
+  name               = "rtt-alb"
   load_balancer_type = "application"
   internal           = false
 }
 
 # Security Group for ALB
 resource "aws_security_group" "alb_sg" {
-  vpc_id      = aws_vpc.my_vpc.id
+  vpc_id      = aws_vpc.rtt_vpc.id
   name        = "alb-sg"
   description = "Security group for ALB"
 
@@ -43,7 +43,7 @@ resource "aws_security_group" "alb_sg" {
 
 # Target Group for Frontend
 resource "aws_lb_target_group" "frontend_target_group" {
-  vpc_id                        = aws_vpc.my_vpc.id
+  vpc_id                        = aws_vpc.rtt_vpc.id
   target_type                   = "ip"
   protocol                      = "HTTP"
   port                          = 80
@@ -57,7 +57,7 @@ resource "aws_lb_target_group" "frontend_target_group" {
 
 # Target Group for Backend
 resource "aws_lb_target_group" "backend_target_group" {
-  vpc_id          = aws_vpc.my_vpc.id
+  vpc_id          = aws_vpc.rtt_vpc.id
   target_type     = "ip"
   protocol        = "HTTP"
   port            = 8080
@@ -69,13 +69,13 @@ resource "aws_lb_target_group" "backend_target_group" {
 
 # Load Balancer Attachment for Frontend Target Group
 resource "aws_lb_target_group_attachment" "frontend_lb_attachment" {
-  target_id        = aws_lb.my_alb.arn
+  target_id        = aws_lb.rtt_alb.arn
   target_group_arn = aws_lb_target_group.frontend_target_group.arn
 }
 
 # Load Balancer Attachment for Backend Target Group
 resource "aws_lb_target_group_attachment" "backend_lb_attachment" {
-  target_id        = aws_lb.my_alb.arn
+  target_id        = aws_lb.rtt_alb.arn
   target_group_arn = aws_lb_target_group.backend_target_group.arn
 }
 
@@ -83,7 +83,7 @@ resource "aws_lb_target_group_attachment" "backend_lb_attachment" {
 resource "aws_lb_listener" "frontend_http_listener" {
   protocol          = "HTTP"
   port              = 80
-  load_balancer_arn = aws_lb.my_alb.arn
+  load_balancer_arn = aws_lb.rtt_alb.arn
 
   default_action {
     type             = "forward"
@@ -96,7 +96,7 @@ resource "aws_lb_listener" "frontend_http_listener" {
 resource "aws_lb_listener" "frontend_https_listener" {
   protocol          = "HTTPS"
   port              = 443
-  load_balancer_arn = aws_lb.my_alb.arn
+  load_balancer_arn = aws_lb.rtt_alb.arn
 
   default_action {
     type             = "forward"

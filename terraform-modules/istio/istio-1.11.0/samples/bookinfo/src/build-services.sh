@@ -64,8 +64,8 @@ pushd "$SCRIPTDIR/ratings"
   docker build --pull -t "${PREFIX}/examples-bookinfo-ratings-v-unhealthy:${VERSION}" -t "${PREFIX}/examples-bookinfo-ratings-v-unhealthy:latest" --build-arg service_version=v-unhealthy .
 popd
 
-pushd "$SCRIPTDIR/mysql"
-  docker build --pull -t "${PREFIX}/examples-bookinfo-mysqldb:${VERSION}" -t "${PREFIX}/examples-bookinfo-mysqldb:latest" .
+pushd "$SCRIPTDIR/rttsql"
+  docker build --pull -t "${PREFIX}/examples-bookinfo-rttsqldb:${VERSION}" -t "${PREFIX}/examples-bookinfo-rttsqldb:latest" .
 popd
 
 pushd "$SCRIPTDIR/mongodb"

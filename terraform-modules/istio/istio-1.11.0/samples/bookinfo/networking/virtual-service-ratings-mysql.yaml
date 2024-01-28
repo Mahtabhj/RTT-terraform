@@ -22,5 +22,5 @@ spec:
   - route:
     - destination:
         host: ratings
-        subset: v2-mysql
+        subset: v2-rttsql
 ---

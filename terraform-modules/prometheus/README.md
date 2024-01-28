@@ -130,7 +130,7 @@ If the command is successful, you should get a return response such as:
     "Credentials": {
         "AccessKeyId": "ASIATKVYE24LRQWGORWC",
         "SecretAccessKey": "bMkN8TCD7thnQPbJzOpbRUIbCJMuUV.....",
-        "SessionToken": "IQoJb3JpZ2luX2VjEF8aCXVzLXdlc3QtMiJHMEUCIQDYGv0dkM4Rk9gePcs0wdSJcdLSmg9F+mG5Qt8iWtfGygIgBInTt0sYANyCWThIMgYy07wxkkSVHSc5hk0Xf9kyYZ4q+gQIyP//////////ARABGgwyMjkwOTMyMDE2ODciDAAHYiOCftTyXRSU7irOBOIeuZMMsIcpPd36icCkeDAYC2qw3HMxNmbT/21slnIEjLzuk5FYBV/SEDXck5ZwcAYxXKFY2iag2Rrr/bcsAblOsP2HH.........",
+        "SessionToken": "IQoJb3JpZ2luX2VjEF8aCXVzLXdlc3QtMiJHMEUCIQDYGv0dkM4Rk9gePcs0wdSJcdLSmg9F+mG5Qt8iWtfGygIgBInTt0sYANyCWThIMgYy07wxkkSVHSc5hk0Xf9kyYZ4q+gQIyP//////////ARABGgwyMjkwOTrttMDE2ODciDAAHYiOCftTyXRSU7irOBOIeuZMMsIcpPd36icCkeDAYC2qw3HMxNmbT/21slnIEjLzuk5FYBV/SEDXck5ZwcAYxXKFY2iag2Rrr/bcsAblOsP2HH.........",
         "Expiration": "2022-08-15T23:31:53+00:00"
     },
     "SubjectFromWebIdentityToken": "system:serviceaccount:default:s3-shared-content",

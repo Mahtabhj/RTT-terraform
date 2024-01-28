@@ -1,7 +1,7 @@
 # ecs.tf
 
-resource "aws_ecs_cluster" "my_cluster" {
-  name = "my-cluster"
+resource "aws_ecs_cluster" "rtt_cluster" {
+  name = "rtt-cluster"
 }
 
 resource "aws_ecr_repository" "frontend_repo" {
@@ -31,7 +31,7 @@ resource "aws_ecs_task_definition" "frontend_task" {
       hostPort      = 80
     }],
     environment = [
-      { name = "S3_BUCKET_NAME", value = aws_s3_bucket.my_s3_bucket.bucket },
+      { name = "S3_BUCKET_NAME", value = aws_s3_bucket.rtt_s3_bucket.bucket },
     ]
   }])
 
@@ -51,7 +51,7 @@ resource "aws_ecs_task_definition" "backend_task" {
       hostPort      = 8080
     }],
     environment = [
-      { name = "S3_BUCKET_NAME", value = aws_s3_bucket.my_s3_bucket.bucket },
+      { name = "S3_BUCKET_NAME", value = aws_s3_bucket.rtt_s3_bucket.bucket },
     ]
   }])
 
@@ -67,9 +67,9 @@ resource "aws_ecs_task_definition" "celery_task" {
     name  = "celery-container"
     image = aws_ecr_repository.celery_repo.repository_url
     environment = [
-      { name = "POSTGRES_HOST", value = aws_db_instance.my_rds.address },
-      { name = "POSTGRES_USER", value = aws_db_instance.my_rds.username },
-      { name = "POSTGRES_PASSWORD", value = aws_db_instance.my_rds.password },
+      { name = "POSTGRES_HOST", value = aws_db_instance.rtt_rds.address },
+      { name = "POSTGRES_USER", value = aws_db_instance.rtt_rds.username },
+      { name = "POSTGRES_PASSWORD", value = aws_db_instance.rtt_rds.password },
       { name = "POSTGRES_DB", value = "your_database_name" },
     ]
   }])
@@ -86,9 +86,9 @@ resource "aws_ecs_task_definition" "celery_beat_task" {
     name  = "celery-beat-container"
     image = aws_ecr_repository.celery_beat_repo.repository_url
     environment = [
-      { name = "POSTGRES_HOST", value = aws_db_instance.my_rds.address },
-      { name = "POSTGRES_USER", value = aws_db_instance.my_rds.username },
-      { name = "POSTGRES_PASSWORD", value = aws_db_instance.my_rds.password },
+      { name = "POSTGRES_HOST", value = aws_db_instance.rtt_rds.address },
+      { name = "POSTGRES_USER", value = aws_db_instance.rtt_rds.username },
+      { name = "POSTGRES_PASSWORD", value = aws_db_instance.rtt_rds.password },
       { name = "POSTGRES_DB", value = "your_database_name" },
     ]
   }])
@@ -103,7 +103,7 @@ resource "aws_ecs_service" "frontend_service" {
   name            = "frontend-service"
   launch_type     = "FARGATE"
   desired_count   = 2
-  cluster         = aws_ecs_cluster.my_cluster.id
+  cluster         = aws_ecs_cluster.rtt_cluster.id
 
   network_configuration {
     subnets = aws_subnet.public_subnet[*].id
@@ -117,11 +117,11 @@ resource "aws_ecs_service" "backend_service" {
   iam_role             = aws_ecs_service.backend_service.name
   force_new_deployment = true
   desired_count        = 2
-  cluster              = aws_ecs_cluster.my_cluster.id
+  cluster              = aws_ecs_cluster.rtt_cluster.id
 
   load_balancer {
     target_group_arn = aws_lb_target_group.backend_target_group.arn
-    elb_name         = aws_lb.my_alb.name
+    elb_name         = aws_lb.rtt_alb.name
     container_port   = 8000
     container_name   = aws_ecs_task_definition.backend_task.family
   }
@@ -136,7 +136,7 @@ resource "aws_ecs_service" "celery_service" {
   name            = "celery-service"
   launch_type     = "FARGATE"
   desired_count   = 2
-  cluster         = aws_ecs_cluster.my_cluster.id
+  cluster         = aws_ecs_cluster.rtt_cluster.id
 
   network_configuration {
     subnets = aws_subnet.private_subnet[*].id
@@ -148,7 +148,7 @@ resource "aws_ecs_service" "celery_beat_service" {
   name            = "celery-beat-service"
   launch_type     = "FARGATE"
   desired_count   = 1
-  cluster         = aws_ecs_cluster.my_cluster.id
+  cluster         = aws_ecs_cluster.rtt_cluster.id
 
   network_configuration {
     subnets = aws_subnet.private_subnet[*].id

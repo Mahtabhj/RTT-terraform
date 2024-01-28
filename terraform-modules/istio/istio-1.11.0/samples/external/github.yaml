@@ -19,14 +19,14 @@ spec:
 ---
 # For TCP services the IP ranges SHOULD be specified to avoid problems
 # if multiple SEs use the same port number.
-# See https://istio.io/blog/2018/egress-tcp/#mesh-external-service-entry-for-an-external-mysql-instance
+# See https://istio.io/blog/2018/egress-tcp/#mesh-external-service-entry-for-an-external-rttsql-instance
 apiVersion: networking.istio.io/v1alpha3
 kind: ServiceEntry
 metadata:
   name: github-tcp
 spec:
   hosts:
-  - dummy.github.com # not used
+  - dumrtt.github.com # not used
   addresses: # from https://help.github.com/articles/about-github-s-ip-addresses/
   - "13.229.188.59/32"
   - "13.250.177.223/32"

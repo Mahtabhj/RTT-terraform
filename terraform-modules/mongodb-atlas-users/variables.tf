@@ -88,7 +88,7 @@ variable "custom_user_scopes" {
   description = "A list of clusters and data lakes the custom user"
   default = [
     {
-      name = "my_cluster"
+      name = "rtt_cluster"
       type = "CLUSTER"
     }
   ]

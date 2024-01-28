@@ -48,12 +48,12 @@ spec:
   - name: v2
     labels:
       version: v2
-  - name: v2-mysql
+  - name: v2-rttsql
     labels:
-      version: v2-mysql
-  - name: v2-mysql-vm
+      version: v2-rttsql
+  - name: v2-rttsql-vm
     labels:
-      version: v2-mysql-vm
+      version: v2-rttsql-vm
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule

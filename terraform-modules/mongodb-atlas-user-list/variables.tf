@@ -13,7 +13,7 @@ variable "roles" {
   default     = [
     {
       role_name = "readWrite"
-      database_name = "my_db"
+      database_name = "rtt_db"
     },
   ]
   description = "The set of roles that are applied to the user"
@@ -40,8 +40,8 @@ variable "database_users" {
   default     = [
     {
       username = "foo"
-      aws_secret_name   = "my_secret"
-      aws_secret_description = "my secret description"
+      aws_secret_name   = "rtt_secret"
+      aws_secret_description = "rtt secret description"
       # (Optional) Number of days that AWS Secrets Manager waits before it can delete the secret. This value can be 0 to force deletion without recovery or range from 7 to 30 days. The default value is 30.
       recovery_window_in_days = 0
       # Only needed if enable_aws_secret==false, then all user needs to have
@@ -51,7 +51,7 @@ variable "database_users" {
       roles = [
         {
           role_name = "readWrite"
-          database_name = "my_db"
+          database_name = "rtt_db"
         },
       ]
       tags = {}

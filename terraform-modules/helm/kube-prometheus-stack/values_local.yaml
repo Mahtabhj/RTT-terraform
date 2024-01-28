@@ -44,11 +44,11 @@ grafana:
     hosts:
     - grafana.kubernetes-ops.com
   # nodeSelector:
-  #   app-type: my-app
+  #   app-type: rtt-app
   # tolerations:
   # - key: "app-type"
   #   operator: "Equal"
-  #   value: "my-app"
+  #   value: "rtt-app"
   #   effect: "NoSchedule"
   %{ if enable_grafana_aws_role }
   annotations:

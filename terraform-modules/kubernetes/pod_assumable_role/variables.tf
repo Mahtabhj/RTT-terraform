@@ -12,7 +12,7 @@ variable "eks_cluster_oidc_issuer_url" {
 variable "k8s_namespace" {
   type        = string
   description = "The namespace that this service account will be used in"
-  default     = "my_namespace"
+  default     = "rtt_namespace"
 }
 
 variable "iam_policy_description" {

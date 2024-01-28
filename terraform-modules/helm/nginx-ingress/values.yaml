@@ -13,9 +13,9 @@ controller:
       # https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer
       service.beta.kubernetes.io/aws-load-balancer-internal: "false"
   # nodeSelector:
-  #   app-type: my-node
+  #   app-type: rtt-node
   # tolerations:
   # - key: "app-type"
   #   operator: "Equal"
-  #   value: "my-node"
+  #   value: "rtt-node"
   #   effect: "NoSchedule"

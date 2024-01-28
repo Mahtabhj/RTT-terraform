@@ -28,9 +28,9 @@ a _curl_ command against `httpbin:8000` *from inside the cluster* using the publ
 image from Docker hub:
 
 ```bash
-kubectl run -i --rm --restart=Never dummy --image=dockerqa/curl:ubuntu-trusty --command -- curl --silent httpbin:8000/html
-kubectl run -i --rm --restart=Never dummy --image=dockerqa/curl:ubuntu-trusty --command -- curl --silent --head httpbin:8000/status/500
-time kubectl run -i --rm --restart=Never dummy --image=dockerqa/curl:ubuntu-trusty --command -- curl --silent httpbin:8000/delay/5
+kubectl run -i --rm --restart=Never dumrtt --image=dockerqa/curl:ubuntu-trusty --command -- curl --silent httpbin:8000/html
+kubectl run -i --rm --restart=Never dumrtt --image=dockerqa/curl:ubuntu-trusty --command -- curl --silent --head httpbin:8000/status/500
+time kubectl run -i --rm --restart=Never dumrtt --image=dockerqa/curl:ubuntu-trusty --command -- curl --silent httpbin:8000/delay/5
 ```
 
 You can also test the httpbin service by starting the [sleep service](../sleep) and calling httpbin from it.

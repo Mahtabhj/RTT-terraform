@@ -58,7 +58,7 @@ No modules.
 | <a name="input_set_sensitive"></a> [set\_sensitive](#input\_set\_sensitive) | n/a | `any` | `null` | no |
 | <a name="input_skip_crds"></a> [skip\_crds](#input\_skip\_crds) | n/a | `bool` | `false` | no |
 | <a name="input_timeout"></a> [timeout](#input\_timeout) | n/a | `number` | `300` | no |
-| <a name="input_user_chart_name"></a> [user\_chart\_name](#input\_user\_chart\_name) | This is the chart name that the user wants to deploy the chart as | `string` | `"my-chart-name"` | no |
+| <a name="input_user_chart_name"></a> [user\_chart\_name](#input\_user\_chart\_name) | This is the chart name that the user wants to deploy the chart as | `string` | `"rtt-chart-name"` | no |
 | <a name="input_verify"></a> [verify](#input\_verify) | Verify the helm download | `bool` | `false` | no |
 | <a name="input_wait"></a> [wait](#input\_wait) | n/a | `bool` | `true` | no |
 | <a name="input_wait_for_jobs"></a> [wait\_for\_jobs](#input\_wait\_for\_jobs) | n/a | `bool` | `false` | no |

@@ -38,7 +38,7 @@ No requirements.
 | <a name="input_eks_cluster_oidc_issuer_url"></a> [eks\_cluster\_oidc\_issuer\_url](#input\_eks\_cluster\_oidc\_issuer\_url) | EKS cluster oidc issuer url | `string` | `""` | no |
 | <a name="input_iam_policy_description"></a> [iam\_policy\_description](#input\_iam\_policy\_description) | The description to place onto the IAM policy | `string` | `"The policy created by the pod_assumable_role Terraform module"` | no |
 | <a name="input_iam_policy_json"></a> [iam\_policy\_json](#input\_iam\_policy\_json) | The IAM policy json | `string` | `"{}"` | no |
-| <a name="input_k8s_namespace"></a> [k8s\_namespace](#input\_k8s\_namespace) | The namespace that this service account will be used in | `string` | `"my_namespace"` | no |
+| <a name="input_k8s_namespace"></a> [k8s\_namespace](#input\_k8s\_namespace) | The namespace that this service account will be used in | `string` | `"rtt_namespace"` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name to use for the various resources: IAM role, policy, etc | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | Set of tags to place on the resources | `map(any)` | `{}` | no |
 

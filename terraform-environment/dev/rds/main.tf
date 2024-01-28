@@ -1,11 +1,11 @@
-resource "aws_db_instance" "my_rds" {
+resource "aws_db_instance" "rtt_rds" {
   username            = "db_user"
   storage_type        = "gp2"
   skip_final_snapshot = true
   publicly_accessible = false
   password            = "db_password"
   instance_class      = "db.t2.micro"
-  identifier          = "my-rds-instance"
+  identifier          = "rtt-rds-instance"
   engine              = "postgres"
   allocated_storage   = 20
 
@@ -15,7 +15,7 @@ resource "aws_db_instance" "my_rds" {
 }
 
 resource "aws_security_group" "rds_sg" {
-  vpc_id      = aws_vpc.my_vpc.id
+  vpc_id      = aws_vpc.rtt_vpc.id
   name        = "rds-sg"
   description = "Security group for RDS"
 

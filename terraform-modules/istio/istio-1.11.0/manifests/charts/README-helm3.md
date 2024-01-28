@@ -27,8 +27,8 @@ helm install istio-base -n istio-system manifests/charts/base
  helm install -n istio-system istio-canary manifests/charts/istio-control/istio-discovery \
     --set revision=canary
 
- helm install -n istio-system istio-mytest manifests/charts/istio-control/istio-discovery \
-    --set revision=mytest
+ helm install -n istio-system istio-rtttest manifests/charts/istio-control/istio-discovery \
+    --set revision=rtttest
 ```
 
 - `gateways` install a load balancer with `ingress` and `egress`. You can install it multiple times with different revisions but they must be installed in separate namespaces.

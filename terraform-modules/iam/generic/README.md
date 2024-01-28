@@ -57,7 +57,7 @@ The iam_managed_policy_arns input param allows an array with one or more managed
 2. **Role With Inline policy** 
 You can create a Iam Role with your own inline policy
 
-    2.1 Create a new policy file (example: mypolicy.json)
+    2.1 Create a new policy file (example: rttpolicy.json)
     ```
     {
         "Id": "ExamplePolicy",
@@ -86,7 +86,7 @@ You can create a Iam Role with your own inline policy
     iam_name                  = local.iam_rolename
     iam_description           = local.iam_description
     iam_force_detach_policies = true
-    input_iam_inline_policy   = templatefile("mypolicy.json", { bucket_name="my_bucket_name" })
+    input_iam_inline_policy   = templatefile("rttpolicy.json", { bucket_name="rtt_bucket_name" })
     tags                      = local.tags
     ```
 

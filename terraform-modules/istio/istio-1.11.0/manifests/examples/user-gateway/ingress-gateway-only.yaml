@@ -5,4 +5,4 @@ spec:
   components:
     ingressGateways:
       - enabled: true
-        namespace: my-namespace
+        namespace: rtt-namespace

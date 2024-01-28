@@ -25,7 +25,7 @@ variable "official_chart_name" {
 
 variable "user_chart_name" {
   type        = string
-  default     = "my-chart-name"
+  default     = "rtt-chart-name"
   description = "This is the chart name that the user wants to deploy the chart as"
 }
 

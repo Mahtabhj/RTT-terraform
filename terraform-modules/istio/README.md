@@ -60,7 +60,7 @@ helm install -n istio-system istio-egress manifests/charts/gateways/istio-egress
 ## Enable auto Istio/Envoy injection
 
 ```
-kubectl label namespace my-app istio-injection=enabled
+kubectl label namespace rtt-app istio-injection=enabled
 ```
 
 ## Verify mTLS

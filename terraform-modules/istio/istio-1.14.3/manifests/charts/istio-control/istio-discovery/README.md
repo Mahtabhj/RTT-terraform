@@ -55,5 +55,5 @@ Control plane revisions allow deploying multiple versions of the control plane i
 This allows safe [canary upgrades](https://istio.io/latest/docs/setup/upgrade/canary/)
 
 ```yaml
-revision: my-revision-name
+revision: rtt-revision-name
 ```

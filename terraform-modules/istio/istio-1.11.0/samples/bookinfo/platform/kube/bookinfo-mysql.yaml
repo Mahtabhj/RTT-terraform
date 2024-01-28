@@ -13,13 +13,13 @@
 #   limitations under the License.
 
 ##################################################################################################
-# Mysql db services
+# rttsql db services
 # credentials: root/password
 ##################################################################################################
 apiVersion: v1
 kind: Secret
 metadata:
-  name: mysql-credentials
+  name: rttsql-credentials
 type: Opaque
 data:
   rootpasswd: cGFzc3dvcmQ=
@@ -27,53 +27,53 @@ data:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysqldb
+  name: rttsqldb
   labels:
-    app: mysqldb
-    service: mysqldb
+    app: rttsqldb
+    service: rttsqldb
 spec:
   ports:
   - port: 3306
     name: tcp
   selector:
-    app: mysqldb
+    app: rttsqldb
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysqldb-v1
+  name: rttsqldb-v1
   labels:
-    app: mysqldb
+    app: rttsqldb
     version: v1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mysqldb
+      app: rttsqldb
       version: v1
   template:
     metadata:
       labels:
-        app: mysqldb
+        app: rttsqldb
         version: v1
     spec:
       containers:
-      - name: mysqldb
-        image: docker.io/istio/examples-bookinfo-mysqldb:1.16.2
+      - name: rttsqldb
+        image: docker.io/istio/examples-bookinfo-rttsqldb:1.16.2
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3306
         env:
-          - name: MYSQL_ROOT_PASSWORD
+          - name: rttSQL_ROOT_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: mysql-credentials
+                name: rttsql-credentials
                 key: rootpasswd
-        args: ["--default-authentication-plugin","mysql_native_password"]
+        args: ["--default-authentication-plugin","rttsql_native_password"]
         volumeMounts:
-        - name: var-lib-mysql
-          mountPath: /var/lib/mysql
+        - name: var-lib-rttsql
+          mountPath: /var/lib/rttsql
       volumes:
-      - name: var-lib-mysql
+      - name: var-lib-rttsql
         emptyDir: {}
 ---

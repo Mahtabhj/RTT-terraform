@@ -1,4 +1,4 @@
 variable "app_namespace" {
-  default     = "my-app"
+  default     = "rtt-app"
   description = "The namespace that the applications are in"
 }
