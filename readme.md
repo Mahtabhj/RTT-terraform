@@ -1,5 +1,4 @@
-```markdown
-# Terraform Infrastructure as Code (IaC) Project
+# Terraform Infrastructure as Code (IaC) Project for RTT
 
 This project uses Terraform to define and deploy cloud infrastructure on AWS.
 
